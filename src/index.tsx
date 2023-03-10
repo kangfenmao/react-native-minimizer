@@ -31,3 +31,9 @@ export const exit = (): void => {
   console.log('exit');
   ReactNativeMinimizer.exit();
 };
+
+export default {
+  minimize,
+  goBack,
+  exit,
+};
