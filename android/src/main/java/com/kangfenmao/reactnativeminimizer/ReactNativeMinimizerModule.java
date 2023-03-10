@@ -1,32 +1,44 @@
 package com.kangfenmao.reactnativeminimizer;
 
-import androidx.annotation.NonNull;
-
-import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.module.annotations.ReactModule;
+import com.facebook.react.bridge.Callback;
+import android.app.Activity;
+import android.content.Intent;
 
-@ReactModule(name = ReactNativeMinimizerModule.NAME)
-public class ReactNativeMinimizerModule extends ReactContextBaseJavaModule {
-  public static final String NAME = "ReactNativeMinimizer";
+public class MinimizerModule extends ReactContextBaseJavaModule {
 
-  public ReactNativeMinimizerModule(ReactApplicationContext reactContext) {
-    super(reactContext);
-  }
+    private final ReactApplicationContext reactContext;
 
-  @Override
-  @NonNull
-  public String getName() {
-    return NAME;
-  }
+    public MinimizerModule(ReactApplicationContext reactContext) {
+        super(reactContext);
+        this.reactContext = reactContext;
+    }
 
+    @Override
+    public String getName() {
+        return "Minimizer";
+    }
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  @ReactMethod
-  public void multiply(double a, double b, Promise promise) {
-    promise.resolve(a * b);
-  }
+    @ReactMethod
+    public void exit() {
+      Activity activity = reactContext.getCurrentActivity();
+      activity.finishAffinity();
+      System.exit(0);
+    }
+
+    @ReactMethod
+    public void goBack() {
+      Activity activity = reactContext.getCurrentActivity();
+      activity.moveTaskToBack(true);
+    }
+
+    @ReactMethod
+    public void minimize() {
+      Intent startMain = new Intent(Intent.ACTION_MAIN);
+      startMain.addCategory(Intent.CATEGORY_HOME);
+      startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+      this.reactContext.startActivity(startMain);
+    }
 }

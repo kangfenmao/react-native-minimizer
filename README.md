@@ -1,6 +1,6 @@
 # @kangfenmao/react-native-minimizer
 
-Minimize React Native app, works on Android And iOS.
+Minimize or redirect back to previous APP, works on Android And iOS.
 
 ## Installation
 
@@ -11,11 +11,16 @@ npm install @kangfenmao/react-native-minimizer
 ## Usage
 
 ```js
-import { multiply } from '@kangfenmao/react-native-minimizer';
+import Minimizer from '@kangfenmao/react-native-minimizer';
 
-// ...
+// Put the APP in the background.
+Minimizer.minimize()
 
-const result = await multiply(3, 7);
+// Exit the APP
+Minimizer.exit()
+
+// Return to the previous APP.
+Minimizer.goBack()
 ```
 
 ## Contributing

@@ -17,6 +17,17 @@ const ReactNativeMinimizer = NativeModules.ReactNativeMinimizer
       }
     );
 
-export function multiply(a: number, b: number): Promise<number> {
-  return ReactNativeMinimizer.multiply(a, b);
-}
+export const minimize = (): void => {
+  console.log('minimize');
+  ReactNativeMinimizer.minimize();
+};
+
+export const goBack = (): void => {
+  console.log('goBack');
+  ReactNativeMinimizer.goBack();
+};
+
+export const exit = (): void => {
+  console.log('exit');
+  ReactNativeMinimizer.exit();
+};
