@@ -1,6 +1,6 @@
 {
   "name": "@kangfenmao/react-native-minimizer",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Minimize or redirect back to previous APP, works on Android And iOS.",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
